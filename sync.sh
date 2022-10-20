@@ -22,6 +22,17 @@ if [[ "$remote" == "" ]]; then
     exit 1
 fi
 
+dsfile=$local/.DS_Store
+dsfile_enc=$local/.DS_Store.enc
+
+if [ -f "$dsfile" ] ; then
+    rm $dsfile
+fi
+
+if [ -f "$dsfile_enc" ] ; then
+    rm $dsfile_enc
+fi
+
 case $direction in
     up)
         echo "Running rclone sync -P $local $remote"
